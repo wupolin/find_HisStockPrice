@@ -3,17 +3,17 @@ import requests #step1
 from requests_html import HTML #step2
 
 
-def fetch(url): #step1
+def fetch(url): #step1 : to fetch the website
     response = requests.get(url)
     return response
 
-def parse_article_entries(doc): #step2
+def parse_article_entries(doc): #step2 : to find the entries we want in the website  
     html = HTML(html=doc)
     post_entries = html.find('table')
     return post_entries
 
 
-def parse_article_meta(entry): #step3
+def parse_article_meta(entry): #step3 : to catalog the data in the wedsite
     return {
     	'stocknum': entry.find('tr > th'), #find the stock number and name
         'datatype': entry.find('thead tr td'), #find the datatype in the table
@@ -26,7 +26,7 @@ def print_stockinfo(day,post_entries):
     for entry in post_entries: 
         meta = parse_article_meta(entry)
         lst=[]
-        lst.append(meta['stocknum'][0].text[8:12])
+        lst.append(meta['stocknum'][0].text[8:16])
         print(meta['stocknum'][0].text[8:16]) #print STOCK NO. and name 
         datatype=(meta['datatype'][0].text,meta['datatype'][3].text,meta['datatype'][4].text,meta['datatype'][5].text,meta['datatype'][6].text)
         datalist=[]
@@ -58,20 +58,35 @@ def mainfunc(url,day):
 app=Flask(__name__)
 
 
-@app.route('/todo/api/tasks/id=<string:stocknum>&day=<string:day>',methods=['GET'])
+@app.route('/stock/id=<string:stocknum>&day=<string:day>',methods=['GET'])
 def get_tasks(stocknum,day):
-	url = 'http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=html&date=20180715&stockNo='+stocknum
-	lst=mainfunc(url,day)
-	tasks=[
+    #check if input data is correct 
+    if len(stocknum)!=4 or stocknum.isdigit() == False: 
+        stock=[{'Error' : 'please input the correct type of stock symbol (e.g. id=2330)'}]
+        return jsonify(stock)
+    if day.isdigit() == False:
+        stock=[{'Error' : 'please input the type of Integer (e.g. day=5)'}]
+        return jsonify(stock)
+    url = 'http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=html&date=20180715&stockNo='+stocknum
+    lst=mainfunc(url,day)
+    #if the stock symbol isn't existing
+    if lst==None:
+        stock=[{'Error' : 'There isn\'t existing this stock symbol'}]
+        return jsonify(stock)
+    stock=[
 		{
 			'Stock Symbol':lst[0]
 		},
 	]
-	i=1		
-	while i<len(lst):			
-		tasks.append(lst[i])
-		i=i+1
-	return jsonify(tasks)
+    i=1		
+    while i<len(lst):			
+        stock.append(lst[i])
+        i=i+1
+    if int(day)>10:
+        stock.append('Notice:')
+        stock.append('There are just shown the information in 10 days')
+        stock.append('Becauese the system just store the stock information in the past 10 days')
+    return jsonify(stock)
 
 if __name__=='__main__':
 	app.run(debug=True)
