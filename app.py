@@ -21,7 +21,11 @@ def parse_article_meta(entry): #to catalog the data from the wedsite
 def print_stockinfo(day,pentries):
     html = HTML(html=pentries)
     meta = parse_article_meta(html)
+    print('i am here!!!!!!!!!!!!')
+    print(len(meta['stocknum']))
     lst=[]
+    if len(meta['stocknum'])==0: #if the stock symbol is incorrect
+        return lst
     lst.append(meta['stocknum'][0].text[8:12]) #put the stock symbol in the list
     print(meta['stocknum'][0].text[8:16]) #print STOCK NO. and name on the terminal
     datalist=[]
@@ -62,7 +66,7 @@ def get_tasks(stocknum,day):
     url = 'http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=html&date=20180715&stockNo='+stocknum
     lst=getlst(url,day)
     #if the stock symbol isn't existing
-    if lst==None:
+    if len(lst)==0: #if the stock symbol is incorrect
         stock=[{'Error' : 'There isn\'t existing this stock symbol'}]
         return jsonify(stock)
     stock=[
