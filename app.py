@@ -26,7 +26,7 @@ def print_stockinfo(day,post_entries):
     for entry in post_entries: 
         meta = parse_article_meta(entry)
         lst=[]
-        lst.append(meta['stocknum'][0].text[8:16])
+        lst.append(meta['stocknum'][0].text[8:12])
         print(meta['stocknum'][0].text[8:16]) #print STOCK NO. and name 
         datatype=(meta['datatype'][0].text,meta['datatype'][3].text,meta['datatype'][4].text,meta['datatype'][5].text,meta['datatype'][6].text)
         datalist=[]
