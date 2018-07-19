@@ -1,6 +1,6 @@
-# Server_webapi 
+# find_HisStockPrice
 
-Server_webapi is a tool to help people search and realize the history of stock price. 
+find_HisStockPrice is a tool to help people search and realize the history of stock price. 
 
 ## Installation
 
@@ -15,7 +15,7 @@ Server_webapi is a tool to help people search and realize the history of stock p
 
 ## Usage
 
-There are two Python scripts in the repository and three methods to implement the purpose of searching the history price.
+There are two Python scripts in the repository and three methods to implement the purpose of searching the history of stock price.
 
 ### 1. Use the AWS server 
 
@@ -63,14 +63,14 @@ $curl 'http://127.0.0.1:5000/stock/id=2330&day=2'
 >#### Download the python script from Github
 
 ```
-$git clone 'https://Github.com/wupolin/server_webapi.pem'
+$git clone 'https://Github.com/wupolin/find_HisStockPrice.git'
 ```
 
 >#### Keep the web server running on backend
 ##### (In the case that there is just one terminal in the server ) 
 
 ```
-$nohup python3.6 ~/server_webapi/app.py &
+$nohup python3.6 ~/find_HisStockPrice/app.py &
 ```
 #####      Now, please restart the terminal.
 
@@ -106,13 +106,13 @@ $curl 'http://127.0.0.1:5000/stock/id=2330&day=2'
 >#### Download the python script from Github
 
 ```
-$git clone 'https://Github.com/wupolin/server_webapi.pem'
+$git clone 'https://Github.com/wupolin/find_HisStockPrice.git'
 ```
 
 >#### Use python3\.6 to run stock.py
 
 ```
-$python3.6 ~/server_webapi/stock.py
+$python3.6 ~/find_HisStockPrice/stock.py
 ```
 >#### Input the stock symbol and number of days 
 
