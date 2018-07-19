@@ -1,6 +1,6 @@
 # Server_webapi 
 
-Server_webapi is a tool for searching the history of stock price. 
+Server_webapi is a tool to help people search and realize the history of stock price. 
 
 ## Installation
 
@@ -15,7 +15,7 @@ Server_webapi is a tool for searching the history of stock price.
 
 ## Usage
 
-There are two Python scripts in the repository and three methods to implement the purpose of searching.
+There are two Python scripts in the repository and three methods to implement the purpose of searching the history of stock price.
 
 ### 1. Use the AWS server 
 
