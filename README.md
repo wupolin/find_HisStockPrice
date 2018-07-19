@@ -30,7 +30,7 @@ $git clone 'https://Github.com/wupolin/wupolin_keypair.git'
 ```
 $cd ~/wupolin_keypair
 $chmod 400 wupolin_keypair.pem
-$ssh -i wupolin_keypair.pem ubuntu@18.236.161.160
+$ssh -i wupolin_keypair.pem ubuntu@34.219.124.163
 ```
 
 >#### Use web API to query the stock information
