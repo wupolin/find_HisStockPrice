@@ -1,6 +1,6 @@
-# Foobar 
+# Server_webapi 
 
-Foobar is a Python library for dealing with word pluralization.
+Server_webapi is a tool for searching the history of stock price. 
 
 ## Installation
 
@@ -14,6 +14,8 @@ Foobar is a Python library for dealing with word pluralization.
 
 
 ## Usage
+
+There are two Python scripts in the repository and three methods to implement the purpose of searching.
 
 ### 1. Use the AWS server 
 
