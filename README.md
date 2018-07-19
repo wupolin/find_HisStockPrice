@@ -22,7 +22,7 @@ There are two Python scripts in the repository and three methods to implement th
 >#### Download the permission keypair from Github
 
 ```
-$git clone 'https://Github.com/wupolin/wupolin_keypair.pem'
+$git clone 'https://Github.com/wupolin/wupolin_keypair.git'
 ```
 
 >#### Connect to the server built on the AWS
