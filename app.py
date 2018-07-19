@@ -18,11 +18,9 @@ def parse_article_meta(entry): #to catalog the data from the wedsite
     }
 
 #arrange the stock data in the ideal order and store them in a list
-def print_stockinfo(day,pentries):
-    html = HTML(html=pentries)
+def print_stockinfo(day,entries):
+    html = HTML(html=entries)
     meta = parse_article_meta(html)
-    print('i am here!!!!!!!!!!!!')
-    print(len(meta['stocknum']))
     lst=[]
     if len(meta['stocknum'])==0: #if the stock symbol is incorrect
         return lst
@@ -43,7 +41,6 @@ def print_stockinfo(day,pentries):
     i=0
     while i<day:  #make the two row's data combine
         if i==10:
-            print('The system is just storing the information of the stock in 10 days,\nso it\'s just shown the information in 10 days')
             break
         tmp=['Date : '+datalist[i][0],'Total Volume : '+datalist[i][1],'Open price : '+datalist[i][3],'High price : '+datalist[i][4],'Low price : '+datalist[i][5],'Close price : '+datalist[i][6]] 
         lst.append(tmp)         
