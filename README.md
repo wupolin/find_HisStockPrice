@@ -15,7 +15,7 @@ find_HisStockPrice is a tool to help people search and realize the history of st
 
 ## Usage
 
-There are two Python scripts in the repository and three methods to implement the purpose of searching the history of stock price.
+There are two Python scripts in the repository and three methods to implement the purpose of searching the history price.
 
 ### 1. Use the AWS server 
 
